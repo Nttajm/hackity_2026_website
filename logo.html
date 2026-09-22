@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackity — Logo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700;9..40,800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --yellow: #f5e000;
+      --yellow-deep: #e6c200;
+      --ink: #0a0a0a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 40%, #fff36a 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 90%, #ffd000 0%, transparent 50%),
+        linear-gradient(165deg, var(--yellow) 0%, var(--yellow-deep) 100%);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    .mark {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.7rem, 2.2vw, 1.25rem);
+    }
+
+    .logo {
+      position: relative;
+      width: clamp(2.8rem, 8.5vw, 4.6rem);
+      height: clamp(2.8rem, 8.5vw, 4.6rem);
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .word {
+      display: flex;
+      font-size: clamp(2.4rem, 10vw, 5.5rem);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      text-transform: lowercase;
+      color: var(--ink);
+    }
+
+    .word span {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="mark" aria-label="Hackity">
+    <div class="logo">
+      <img src="assets/hackity-logo.png" alt="" />
+    </div>
+    <div class="word" aria-hidden="true">
+      <span>h</span><span>a</span><span>c</span><span>k</span><span>i</span><span>t</span><span>y</span>
+    </div>
+  </div>
+</body>
+</html>
