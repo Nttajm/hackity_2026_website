@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Food — Hackity 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,700;9..40,800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--yellow:#f5e000;--yellow-deep:#e6c200;--ink:#0a0a0a}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"DM Sans",sans-serif;min-height:100vh;background:linear-gradient(165deg,var(--yellow) 0%,var(--yellow-deep) 100%);color:var(--ink)}
+    .wrap{max-width:920px;margin:1.25rem auto;padding:0.75rem}
+    header{display:flex;justify-content:space-between;align-items:center}
+    .brand{display:flex;align-items:center;gap:0.5rem}
+    nav a{margin-left:0.6rem;font-weight:800;color:var(--ink)}
+    h1{font-size:1.6rem;margin-top:0.6rem}
+    p.lead{opacity:0.95;margin-bottom:0.75rem}
+
+    .food-grid{display:grid;grid-template-columns:1fr 340px;gap:0.9rem;margin-top:0.75rem}
+    .panel{background:rgba(255,255,255,0.95);padding:0.9rem;border-radius:10px;border:3px solid rgba(0,0,0,0.06)}
+    .menu-list{display:flex;flex-direction:column;gap:0.45rem}
+    .menu-item{display:flex;align-items:center;gap:0.75rem;padding:0.45rem;border-radius:8px;background:transparent}
+    .menu-time{font-weight:800;color:var(--ink);width:78px;flex-shrink:0}
+    .menu-desc{flex:1;font-weight:800}
+
+    /* food photos */
+    .photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.5rem;margin-top:0.75rem}
+    .food-photo{width:100%;height:140px;object-fit:cover;border-radius:8px;border:2px solid rgba(0,0,0,0.06)}
+
+    /* per-item photo row */
+    .item-photos{display:flex;gap:0.5rem;margin-top:0.5rem;overflow-x:auto;padding-bottom:2px}
+    .food-thumb{width:120px;height:80px;object-fit:cover;border-radius:6px;flex:0 0 auto;border:2px solid rgba(0,0,0,0.06);background:transparent}
+    .food-thumb--blend{border:0;padding:0;background:transparent}
+
+    .map-wrap iframe{width:100%;height:260px;border:0;border-radius:8px}
+
+    @media(max-width:820px){.food-grid{grid-template-columns:1fr}.map-wrap iframe{height:200px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="index.html"><img src="assets/hackity-logo.png" alt="logo" style="width:36px;height:36px;border-radius:6px"/><strong>hackity</strong></a>
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="agenda.html">Agenda</a>
+        <a href="judges.html">Team</a>
+        <a href="food.html">Food</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Food</h1>
+      <p class="lead">Details on meals, snacks, and where to find University Square nearby.</p>
+
+      <section class="food-grid">
+        <div class="panel">
+          <h2 style="margin:0 0 0.6rem 0;font-size:1.05rem">Planned meals</h2>
+          <div class="menu-list">
+            <div class="menu-item">
+              <div class="menu-time">08:30 AM</div>
+              <div class="menu-desc">
+                Breakfast snacks — Check‑in desk
+                <div class="item-photos">
+                  <img class="food-thumb" src="assets/food1.jpg" alt="Breakfast pastries" />
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-time">12:30 PM</div>
+              <div class="menu-desc">
+                Lunch — Dining area
+                <div style="display:flex;gap:0.75rem;align-items:center;margin-top:0.5rem;flex-wrap:wrap">
+                  <figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:0.35rem">
+                    <img class="food-thumb food-thumb--blend" src="assets/Lunch_Boba.png" alt="Boba" style="width:140px;height:140px;object-fit:contain;background:transparent" />
+                    <figcaption style="font-weight:800;font-size:0.86rem">Boba</figcaption>
+                  </figure>
+
+                  <figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:0.35rem">
+                    <img class="food-thumb" src="assets/food4.jpg" alt="Costco pizza" />
+                    <figcaption style="font-weight:800;font-size:0.86rem">Costco pizza</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-time">03:00 PM</div>
+              <div class="menu-desc">
+                Afternoon snacks — Snack station
+                <div class="item-photos">
+                  <img class="food-thumb" src="assets/food3.jpg" alt="Snacks" />
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-time">07:30 PM</div>
+              <div class="menu-desc">
+                Awards refreshments — Dining area
+                <div class="item-photos">
+                  <img class="food-thumb" src="assets/food5.jpg" alt="Dessert" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel map-wrap">
+            <h3 style="margin:0 0 0.6rem 0;font-size:1rem">University Square (nearby)</h3>
+            <iframe src="https://www.google.com/maps?q=University%20Square%201451%20Southwest%20Blvd%20Rohnert%20Park%20CA%2094928&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <p style="margin-top:0.6rem;font-weight:700">University Square — 1451 Southwest Blvd, Rohnert Park, CA 94928. <a href="https://www.google.com/maps/search/1451+Southwest+Blvd+Rohnert+Park+CA+94928" target="_blank" rel="noopener noreferrer">Open in Maps</a></p>
+        </aside>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
