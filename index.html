@@ -42,6 +42,34 @@
       position: relative;
     }
 
+    .site-brand {
+      position: sticky;
+      top: 1.25rem;
+      z-index: 40;
+      width: fit-content;
+      padding: 1.25rem clamp(1.1rem, 3vw, 2rem) 0;
+      margin-bottom: calc(-1 * (2.6rem + 1.25rem));
+      pointer-events: none;
+    }
+
+    .site-brand .brand-wrap {
+      pointer-events: auto;
+    }
+
+    .site-brand.is-on-dark .brand-word {
+      color: var(--yellow);
+    }
+
+    .site-brand.is-on-dark .brand-logo {
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--yellow) 55%, transparent);
+    }
+
+    .top-brand-slot {
+      flex-shrink: 0;
+      width: 2.6rem;
+      height: 2.6rem;
+    }
+
     .first-screen {
       position: relative;
       min-height: 100vh;
@@ -53,6 +81,23 @@
         radial-gradient(ellipse 60% 50% at 80% 90%, #ffd000 0%, transparent 50%),
         linear-gradient(165deg, var(--yellow) 0%, var(--yellow-deep) 100%);
       padding: 1.25rem clamp(1.1rem, 3vw, 2rem);
+      overflow: hidden;
+    }
+
+    .hero-glyphs {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .first-screen > .top,
+    .first-screen > .hero,
+    .first-screen > .foot {
+      position: relative;
+      z-index: 1;
     }
 
     .top {
@@ -93,7 +138,9 @@
       text-transform: lowercase;
       color: var(--ink);
       pointer-events: none;
-      transition: max-width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      transition:
+        max-width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.28s ease;
     }
 
     .brand-word.is-shown {
@@ -269,6 +316,21 @@
       color: var(--ink);
     }
 
+    .hero-notice {
+      display: inline-block;
+      margin-top: clamp(0.65rem, 2vw, 1rem);
+      padding: 0.45rem 0.85rem;
+      background: #d62828;
+      color: #fff;
+      font-size: clamp(0.78rem, 2.1vw, 0.92rem);
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+      text-transform: lowercase;
+      border-radius: 0.35rem;
+      box-shadow: 0 3px 0 #9b1c1c;
+    }
+
     .orbit {
       flex-shrink: 0;
       width: clamp(6.5rem, 22vw, 10.5rem);
@@ -369,59 +431,136 @@
     .about {
       position: relative;
       overflow: hidden;
-      padding: clamp(3.5rem, 10vw, 6.5rem) clamp(1.1rem, 3vw, 2rem) clamp(4rem, 12vw, 7rem);
-      background:
-        radial-gradient(ellipse 70% 60% at 15% 20%, #fff36a 0%, transparent 55%),
-        radial-gradient(ellipse 55% 50% at 90% 80%, #ffd000 0%, transparent 50%),
-        linear-gradient(180deg, var(--yellow-deep) 0%, var(--yellow) 45%, var(--yellow-deep) 100%);
+      padding: clamp(3.75rem, 11vw, 7rem) clamp(1.1rem, 3vw, 2rem) clamp(4.5rem, 12vw, 8rem);
+      background: var(--yellow);
+      color: var(--ink);
+    }
+
+    .about-stamp {
+      position: absolute;
+      right: -2%;
+      bottom: 8%;
+      z-index: 0;
+      margin: 0;
+      font-size: clamp(3.5rem, 14vw, 9rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.85;
+      text-transform: lowercase;
+      color: var(--ink);
+      opacity: 0.07;
+      rotate: -8deg;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      animation: about-stamp-drift 7s ease-in-out infinite alternate;
     }
 
     .about-inner {
-      max-width: 58rem;
+      position: relative;
+      z-index: 1;
+      max-width: 60rem;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(9rem, 13rem);
-      gap: clamp(1.5rem, 5vw, 3.5rem);
+      grid-template-columns: minmax(0, 1fr) minmax(9rem, 14rem);
+      gap: clamp(1.75rem, 5vw, 3.75rem);
       align-items: center;
     }
 
     .about-copy {
       display: flex;
       flex-direction: column;
-      gap: 1.15rem;
+      align-items: flex-start;
+      gap: 1.1rem;
+    }
+
+    .about-kicker {
+      display: inline-block;
+      padding: 0.28rem 0.65rem;
+      background: var(--ink);
+      color: var(--yellow);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      animation: about-kicker-wiggle 3.2s ease-in-out infinite;
     }
 
     .about h2 {
-      font-size: clamp(2.2rem, 7vw, 3.75rem);
+      font-size: clamp(2.6rem, 8vw, 4.4rem);
       font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 0.95;
+      letter-spacing: -0.035em;
+      line-height: 0.92;
       text-transform: lowercase;
     }
 
-    .about p {
-      max-width: 36rem;
-      font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+    .about-lead {
+      max-width: 34rem;
+      font-size: clamp(1.08rem, 2.5vw, 1.35rem);
       font-weight: 700;
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
     .about .highlight {
+      display: inline;
+      padding: 0.05em 0.22em;
+      background: var(--ink);
+      color: var(--yellow);
       font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
+      text-transform: lowercase;
+      letter-spacing: -0.01em;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .about-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-top: 0.35rem;
+      max-width: 34rem;
+    }
+
+    .about-perks li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .about-perks li::before {
+      content: "★";
+      flex-shrink: 0;
+      font-size: 0.85em;
+      line-height: 1.4;
+      animation: about-star-pop 2.8s ease-in-out infinite;
+    }
+
+    .about-perks li:nth-child(2)::before {
+      animation-delay: 0.35s;
+    }
+
+    .about-perks li:nth-child(3)::before {
+      animation-delay: 0.7s;
+    }
+
+    .about-perks strong {
+      font-weight: 800;
     }
 
     .about-props {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.25rem;
+      gap: 0.35rem;
     }
 
     .about-prop {
-      width: clamp(7rem, 22vw, 11rem);
-      height: clamp(7rem, 22vw, 11rem);
+      width: clamp(7.5rem, 22vw, 11.5rem);
+      height: clamp(7.5rem, 22vw, 11.5rem);
       transform-origin: center center;
       animation: rock-step 0.55s linear infinite alternate;
     }
@@ -436,18 +575,19 @@
 
     .about-prop-brawl {
       animation-delay: 0.22s;
-      width: clamp(6rem, 18vw, 9.5rem);
-      height: clamp(6rem, 18vw, 9.5rem);
+      width: clamp(6.25rem, 18vw, 9.75rem);
+      height: clamp(6.25rem, 18vw, 9.75rem);
+      translate: 1.1rem 0;
     }
 
     .about-tag {
       display: inline-block;
-      align-self: flex-start;
-      margin-top: 0.35rem;
-      padding: 0.45rem 0.85rem;
-      border: 2px solid var(--ink);
+      margin-top: 0.55rem;
+      padding: 0.5rem 0.9rem;
+      background: var(--ink);
+      color: var(--yellow);
       border-radius: 0.45rem;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 800;
       text-transform: lowercase;
       animation: tag-bob 2.4s ease-in-out infinite;
@@ -455,7 +595,178 @@
 
     @keyframes tag-bob {
       0%, 100% { transform: translateY(0) rotate(-1.5deg); }
-      50% { transform: translateY(-4px) rotate(1.5deg); }
+      50% { transform: translateY(-5px) rotate(1.8deg); }
+    }
+
+    @keyframes about-kicker-wiggle {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2.5deg); }
+    }
+
+    @keyframes about-stamp-drift {
+      from { translate: 0 0; }
+      to { translate: -1.5% 2%; }
+    }
+
+    @keyframes about-star-pop {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.18) rotate(12deg); }
+    }
+
+    /* ——— prizes ——— */
+    .prizes {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(3.75rem, 11vw, 7rem) clamp(1.1rem, 3vw, 2rem) clamp(4.5rem, 12vw, 8rem);
+      background: var(--ink);
+      color: var(--yellow);
+    }
+
+    .prizes-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 56rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 5vw, 3rem);
+    }
+
+    .prizes-head {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .prizes-kicker {
+      display: inline-block;
+      padding: 0.28rem 0.65rem;
+      background: var(--yellow);
+      color: var(--ink);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .prizes h2 {
+      font-size: clamp(2.6rem, 8vw, 4.4rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 0.92;
+      text-transform: lowercase;
+    }
+
+    .prizes-sub {
+      max-width: 28rem;
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      font-weight: 700;
+      line-height: 1.35;
+      color: color-mix(in srgb, var(--yellow) 78%, #fff);
+    }
+
+    .prize-grand {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem 1.5rem;
+      padding: clamp(1.25rem, 3vw, 1.75rem) 0;
+      border-top: 3px solid var(--yellow);
+      border-bottom: 3px solid var(--yellow);
+    }
+
+    .prize-grand-label {
+      font-size: clamp(1.35rem, 4vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
+      line-height: 1;
+    }
+
+    .prize-grand-amt {
+      font-size: clamp(2.8rem, 10vw, 5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+    }
+
+    .prize-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .prize-block h3 {
+      font-size: clamp(1.15rem, 3vw, 1.45rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-transform: lowercase;
+    }
+
+    .prize-block-note {
+      font-size: 0.9rem;
+      font-weight: 700;
+      opacity: 0.72;
+      text-transform: lowercase;
+    }
+
+    .prize-rows {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .prize-rows li {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: clamp(1.05rem, 2.4vw, 1.2rem);
+      font-weight: 700;
+      text-transform: lowercase;
+      padding-bottom: 0.55rem;
+      border-bottom: 2px dotted color-mix(in srgb, var(--yellow) 35%, transparent);
+    }
+
+    .prize-rows li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .prize-rows .amt {
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .prize-specials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1rem, 3vw, 1.75rem);
+    }
+
+    .prize-special {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 1rem 0 0;
+      border-top: 2px solid var(--yellow);
+    }
+
+    .prize-special span {
+      font-size: clamp(1.05rem, 2.4vw, 1.2rem);
+      font-weight: 800;
+      text-transform: lowercase;
+      letter-spacing: -0.02em;
+    }
+
+    .prize-special strong {
+      font-size: clamp(1.75rem, 5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
     }
 
     /* ——— splash cover ——— */
@@ -623,12 +934,18 @@
         align-items: center;
       }
 
-      .about p {
+      .about-lead,
+      .about-perks {
         max-width: 28rem;
       }
 
-      .about-tag {
-        align-self: center;
+      .about-perks li {
+        justify-content: center;
+        text-align: left;
+      }
+
+      .about-prop-brawl {
+        translate: 0 0;
       }
 
       .about-props {
@@ -642,27 +959,65 @@
         width: clamp(5.5rem, 28vw, 8rem);
         height: clamp(5.5rem, 28vw, 8rem);
       }
+
+      .about-stamp {
+        bottom: 2%;
+        opacity: 0.05;
+      }
+
+      .prizes-head {
+        align-items: center;
+        text-align: center;
+      }
+
+      .prizes-sub {
+        margin-inline: auto;
+      }
+
+      .prize-grand {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .prize-block {
+        text-align: center;
+      }
+
+      .prize-specials {
+        grid-template-columns: 1fr;
+      }
+
+      .prize-special {
+        align-items: center;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
   <main class="site" aria-label="Hackity 2026">
+    <div class="site-brand">
+      <div class="brand-wrap">
+        <a class="brand-logo" href="#" aria-label="Hackity home">
+          <img class="open" src="assets/hackity-logo.png" alt="" />
+          <img class="shut" src="assets/hackity-logo-blink.png" alt="" />
+        </a>
+        <span class="brand-word" id="brand-word" aria-hidden="true">
+          <span>h</span><span>a</span><span>c</span><span>k</span><span>i</span><span>t</span><span>y</span>
+        </span>
+        <p class="ai-tip" id="ai-tip" role="status" aria-live="polite">
+          Hey im hackity! ask me anything.
+        </p>
+      </div>
+    </div>
     <div class="first-screen">
+      <canvas class="hero-glyphs" id="hero-glyphs" aria-hidden="true"></canvas>
       <header class="top">
-        <div class="brand-wrap">
-          <a class="brand-logo" href="#" aria-label="Hackity home">
-            <img class="open" src="assets/hackity-logo.png" alt="" />
-            <img class="shut" src="assets/hackity-logo-blink.png" alt="" />
-          </a>
-          <span class="brand-word" id="brand-word" aria-hidden="true">
-            <span>h</span><span>a</span><span>c</span><span>k</span><span>i</span><span>t</span><span>y</span>
-          </span>
-          <p class="ai-tip" id="ai-tip" role="status" aria-live="polite">
-            Hey im hackity! ask me anything.
-          </p>
-        </div>
+        <div class="top-brand-slot" aria-hidden="true"></div>
         <nav class="nav" aria-label="Primary">
           <a href="#about">About</a>
+          <a href="#prizes">Prizes</a>
           <a href="#agenda">Agenda</a>
           <a href="#faqs">FAQs</a>
           <a href="#judges">Judges</a>
@@ -682,6 +1037,7 @@
               </span>
             </div>
             <h1>hackity 2026</h1>
+            <p class="hero-notice">it's on, date &amp; venue coming soon</p>
           </div>
           <div class="hero-actions">
             <a class="register" href="https://docs.google.com/forms/d/e/1FAIpQLSeKh_-zgAiH0j2Pa5F5RQIaVQ8t5THvN4BtSRWB5kHt2LveHA/viewform?usp=header" target="_blank" rel="noopener noreferrer">RSVP</a>
@@ -709,22 +1065,20 @@
     </div>
 
     <section id="about" class="about" aria-labelledby="about-heading">
+      <p class="about-stamp" aria-hidden="true">build · hang · smash</p>
       <div class="about-inner">
         <div class="about-copy">
+          <p class="about-kicker">high school hackathon</p>
           <h2 id="about-heading">what's hackity?</h2>
-          <p>
-            Hackity 2026 is a fun, high-energy hackathon for high schoolers —
-            <strong class="highlight">beginner friendly</strong>, and all are welcome.
-            We're here to build wild ideas, meet new friends, and have a blast doing it.
+          <p class="about-lead">
+            A high-energy day to build wild ideas, meet new friends, and have a blast —
+            <strong class="highlight">beginner friendly</strong> and open to all.
           </p>
-          <p>
-            Fuel up with <strong>free boba</strong> plus curated lunch and dinner —
-            because great builds need great snacks.
-          </p>
-          <p>
-            Oh, and there's a <strong>Brawl Stars competition</strong> too.
-            Code hard, then smash hard.
-          </p>
+          <ul class="about-perks">
+            <li><strong>free boba</strong> plus curated lunch &amp; dinner</li>
+            <li><strong>brawl stars</strong> competition after you ship</li>
+            <li><strong>all skill levels</strong> — come hang, code hard, smash hard</li>
+          </ul>
           <span class="about-tag">all skill levels · come hang</span>
         </div>
         <div class="about-props" aria-hidden="true">
@@ -734,6 +1088,47 @@
           <span class="about-prop about-prop-brawl">
             <img src="assets/brawlstars.png" alt="" />
           </span>
+        </div>
+      </div>
+    </section>
+
+    <section id="prizes" class="prizes surface-dark" aria-labelledby="prizes-heading">
+      <div class="prizes-inner">
+        <div class="prizes-head">
+          <p class="prizes-kicker">win big</p>
+          <h2 id="prizes-heading">prizes</h2>
+          <p class="prizes-sub">cash for the wildest builds — tracks TBA, prizes locked in.</p>
+        </div>
+
+        <div class="prize-grand">
+          <span class="prize-grand-label">grand prize</span>
+          <span class="prize-grand-amt">$1,000</span>
+        </div>
+
+        <div class="prize-block">
+          <h3>3 tracks</h3>
+          <p class="prize-block-note">track names coming soon · same prizes each</p>
+          <ul class="prize-rows">
+            <li>
+              <span>1st place</span>
+              <span class="amt">$300</span>
+            </li>
+            <li>
+              <span>2nd place</span>
+              <span class="amt">$200</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="prize-specials">
+          <div class="prize-special">
+            <span>best ui</span>
+            <strong>$150</strong>
+          </div>
+          <div class="prize-special">
+            <span>most impactful</span>
+            <strong>$150</strong>
+          </div>
         </div>
       </div>
     </section>
@@ -755,6 +1150,8 @@
     const cover = document.getElementById("cover");
     const aiTip = document.getElementById("ai-tip");
     const brandWord = document.getElementById("brand-word");
+    const siteBrand = document.querySelector(".site-brand");
+    const darkSurfaces = document.querySelectorAll(".surface-dark");
     const tipDurationMs = 2600;
     const brandRevealAt = 48;
 
@@ -776,8 +1173,35 @@
       brandWord.setAttribute("aria-hidden", shown ? "false" : "true");
     }
 
-    window.addEventListener("scroll", updateBrandWord, { passive: true });
-    updateBrandWord();
+    function updateBrandSurface() {
+      if (!siteBrand || !darkSurfaces.length) return;
+      const rect = siteBrand.getBoundingClientRect();
+      const probeX = rect.left + Math.min(rect.width * 0.45, 48);
+      const probeY = rect.top + rect.height * 0.55;
+      let onDark = false;
+      for (const section of darkSurfaces) {
+        const sr = section.getBoundingClientRect();
+        if (
+          probeX >= sr.left &&
+          probeX <= sr.right &&
+          probeY >= sr.top &&
+          probeY <= sr.bottom
+        ) {
+          onDark = true;
+          break;
+        }
+      }
+      siteBrand.classList.toggle("is-on-dark", onDark);
+    }
+
+    function onScrollBrand() {
+      updateBrandWord();
+      updateBrandSurface();
+    }
+
+    window.addEventListener("scroll", onScrollBrand, { passive: true });
+    window.addEventListener("resize", updateBrandSurface);
+    onScrollBrand();
 
     cover.addEventListener("animationend", (event) => {
       if (event.animationName === "cover-out") {
@@ -785,6 +1209,146 @@
         onIntroDone();
       }
     });
+
+    (function initHeroGlyphs() {
+      const screen = document.querySelector(".first-screen");
+      const canvas = document.getElementById("hero-glyphs");
+      if (!screen || !canvas) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const ctx = canvas.getContext("2d");
+      const CHARSET = "0123456789<>(&[]{};:/?|!#@ABCDEF";
+      const CELL = 16;
+      const RADIUS = 160;
+      let dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      let w = 0;
+      let h = 0;
+      let cols = 0;
+      let rows = 0;
+      let grid = [];
+      let target = { x: -9999, y: -9999 };
+      let smooth = { x: -9999, y: -9999 };
+      let active = false;
+      let intensity = 0;
+
+      function hash(x, y) {
+        return Math.abs(Math.sin(x * 12.9898 + y * 78.233) * 43758.5453) % 1;
+      }
+
+      function charAt(col, row) {
+        const i = Math.floor(hash(col, row) * CHARSET.length);
+        return CHARSET[i];
+      }
+
+      function resize() {
+        const rect = screen.getBoundingClientRect();
+        w = rect.width;
+        h = rect.height;
+        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = Math.max(1, Math.floor(w * dpr));
+        canvas.height = Math.max(1, Math.floor(h * dpr));
+        canvas.style.width = w + "px";
+        canvas.style.height = h + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cols = Math.ceil(w / CELL) + 1;
+        rows = Math.ceil(h / CELL) + 1;
+        grid = [];
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            grid.push({ c, r, ch: charAt(c, r) });
+          }
+        }
+      }
+
+      function setPointer(clientX, clientY) {
+        const rect = screen.getBoundingClientRect();
+        target.x = clientX - rect.left;
+        target.y = clientY - rect.top;
+        if (!active && (smooth.x < -1000 || smooth.y < -1000)) {
+          smooth.x = target.x;
+          smooth.y = target.y;
+        }
+        active = true;
+      }
+
+      function onPointerMove(e) {
+        setPointer(e.clientX, e.clientY);
+      }
+
+      function onPointerLeave() {
+        active = false;
+      }
+
+      function frame(t) {
+        intensity += ((active ? 1 : 0) - intensity) * 0.14;
+        if (active) {
+          smooth.x += (target.x - smooth.x) * 0.16;
+          smooth.y += (target.y - smooth.y) * 0.16;
+        }
+        ctx.clearRect(0, 0, w, h);
+
+        ctx.font = "800 12px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = "#0a0a0a";
+
+        const time = t * 0.001;
+        // Diagonal travel (top-left → bottom-right), with curved wavefronts
+        const invSqrt2 = 0.70710678;
+        const waveK = 0.0068;       // lower spatial frequency
+        const waveSpeed = 0.95;     // slower sweep
+        const bendAmp = 42;         // how much crests curve (px)
+        const bendK = 0.011;        // curve undulation along the crest
+        const bendDrift = 0.35;
+
+        for (let i = 0; i < grid.length; i++) {
+          const cell = grid[i];
+          const x = cell.c * CELL + CELL / 2;
+          const y = cell.r * CELL + CELL / 2;
+
+          const along = (x + y) * invSqrt2;
+          const perp = (x - y) * invSqrt2;
+
+          // Warp phase so ridges bend like real wave fronts
+          const curve =
+            bendAmp * Math.sin(perp * bendK + time * bendDrift) +
+            bendAmp * 0.38 * Math.sin(perp * bendK * 1.85 - time * bendDrift * 0.7 + 0.9) +
+            bendAmp * 0.18 * Math.sin(along * 0.004 + perp * bendK * 0.55 + time * 0.22);
+
+          const phase = along + curve;
+          const primary = Math.sin(phase * waveK - time * waveSpeed);
+          const secondary = Math.sin(phase * waveK * 0.55 - time * waveSpeed * 0.62 + 1.4);
+
+          // Soft crests only (less harsh than pow3/pow4 spikes)
+          const crest =
+            Math.pow(Math.max(0, primary), 2.1) * 0.55 +
+            Math.pow(Math.max(0, secondary), 2.4) * 0.22;
+
+          let spot = 0;
+          if (intensity > 0.01) {
+            const d = Math.hypot(x - smooth.x, y - smooth.y);
+            if (d < RADIUS) {
+              spot = (1 - Math.max(0, (d - RADIUS * 0.12) / (RADIUS * 0.88))) * intensity;
+            }
+          }
+
+          const alpha = Math.min(1, 0.04 + crest * 0.16 + spot * 0.72);
+          if (alpha < 0.035) continue;
+          ctx.globalAlpha = alpha;
+          ctx.fillText(cell.ch, x, y);
+        }
+        ctx.globalAlpha = 1;
+
+        requestAnimationFrame(frame);
+      }
+
+      resize();
+      window.addEventListener("resize", resize);
+      screen.addEventListener("pointermove", onPointerMove);
+      screen.addEventListener("pointerdown", onPointerMove);
+      screen.addEventListener("pointerleave", onPointerLeave);
+      requestAnimationFrame(frame);
+    })();
   </script>
 </body>
 </html>
