@@ -1494,6 +1494,242 @@
       background: var(--bento-hover);
     }
 
+    .bento-sponsor {
+      flex-direction: column;
+      align-items: stretch;
+      gap: clamp(1.6rem, 3.5vw, 2.5rem);
+    }
+
+    .sponsor-top {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .sponsor-lead {
+      max-width: 38rem;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .sponsor-pyramid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .tier {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-areas: "name amt" "perk perk";
+      align-items: baseline;
+      gap: 0.25rem 1rem;
+      background: #fff;
+      color: var(--bento-ink);
+      border-radius: 24px;
+      padding: 1rem 1.4rem;
+      text-align: left;
+    }
+
+    .tier-1 { width: 44%; background: var(--bento-ink); color: var(--cream); }
+    .tier-2 { width: 58%; background: #ffe27a; }
+    .tier-3 { width: 72%; background: #e9e9ef; }
+    .tier-4 { width: 86%; background: var(--tile-peach); }
+    .tier-5 { width: 100%; background: var(--tile-mint); }
+
+    .tier-name {
+      grid-area: name;
+      font-family: var(--font-bento);
+      font-weight: 600;
+      font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+      text-transform: lowercase;
+    }
+
+    .tier-amt {
+      grid-area: amt;
+      justify-self: end;
+      font-family: var(--font-bento);
+      font-weight: 700;
+      font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    }
+
+    .tier-perk {
+      grid-area: perk;
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.35;
+      opacity: 0.85;
+    }
+
+    .sponsor-perks {
+      background: rgba(255, 255, 255, 0.55);
+      border-radius: 28px;
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    .sponsor-perks h3 {
+      font-family: var(--font-bento);
+      font-weight: 600;
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+      margin-bottom: 0.9rem;
+    }
+
+    .sponsor-perks ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+      gap: 0.65rem;
+    }
+
+    .sponsor-perks li {
+      background: #fff;
+      border-radius: 18px;
+      padding: 0.85rem 1rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .sponsor-foot {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .sponsor-foot p {
+      font-family: var(--font-bento);
+      font-weight: 600;
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+    }
+
+    .sponsor-why h3,
+    .sponsor-budget h3 {
+      font-family: var(--font-bento);
+      font-weight: 600;
+      font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+      margin-bottom: 0.6rem;
+    }
+
+    .sponsor-why p {
+      max-width: 44rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .sponsor-budget ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      gap: 0.65rem;
+    }
+
+    .sponsor-budget li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      background: #fff;
+      border-radius: 18px;
+      padding: 0.9rem 1rem;
+      font-weight: 600;
+    }
+
+    .budget-amt {
+      font-family: var(--font-bento);
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+
+    .budget-note {
+      margin-top: 0.7rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 700px) {
+      .tier { width: 100% !important; }
+    }
+
+    /* ——— about: what's a hackathon ——— */
+    .about-explainer {
+      position: relative;
+      z-index: 1;
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0 clamp(1.1rem, 3vw, 2rem) clamp(2.25rem, 5vw, 3.5rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .about-explainer h3 {
+      font-family: var(--font-display);
+      font-stretch: 80%;
+      font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    .about-explainer p {
+      font-size: clamp(0.98rem, 1.8vw, 1.1rem);
+      font-weight: 600;
+      line-height: 1.5;
+      max-width: 36rem;
+    }
+
+    .about-explainer p + p {
+      margin-top: 0.7rem;
+    }
+
+    .about-facts {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border: 3px solid var(--ink);
+      background: var(--cream);
+    }
+
+    .about-facts li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 1rem 1.1rem;
+      border-right: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .about-facts li:nth-child(2n) { border-right: none; }
+    .about-facts li:nth-child(n + 3) { border-bottom: none; }
+
+    .about-fact-num {
+      font-family: var(--font-display);
+      font-stretch: 78%;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .about-fact-place {
+      font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+    }
+
+    .about-fact-label {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 820px) {
+      .about-explainer { grid-template-columns: 1fr; }
+    }
+
     .site-footer {
       background: var(--cream);
       color: var(--bento-ink);
@@ -1605,7 +1841,7 @@
               </span>
             </div>
             <h1>hackity 2026</h1>
-            <p class="hero-notice">Date &amp; venue TBA</p>
+            <p class="hero-notice">Date TBA · Rancho Cotati TAG Building (TBD)</p>
           </div>
           <div class="hero-actions">
             <a class="register" href="https://docs.google.com/forms/d/e/1FAIpQLSeKh_-zgAiH0j2Pa5F5RQIaVQ8t5THvN4BtSRWB5kHt2LveHA/viewform?usp=header" target="_blank" rel="noopener noreferrer">RSVP</a>
@@ -1658,6 +1894,29 @@
             <img src="assets/brawlstars.png" alt="" />
           </span>
         </div>
+      </div>
+
+      <div class="about-explainer">
+        <div class="about-explainer-copy">
+          <h3>so what's a hackathon?</h3>
+          <p>
+            A hackathon is a one-day building sprint. You team up (or fly solo), pick a
+            challenge, and spend the day turning an idea into a real app, game, website,
+            or gadget. At the end, teams demo what they made to judges and the best
+            projects win prizes.
+          </p>
+          <p>
+            It's not hacking into anything — it's "hacking together" something cool.
+            You'll learn more in one day than in a month of tutorials, and nobody expects
+            it to be perfect.
+          </p>
+        </div>
+        <ul class="about-facts" aria-label="Quick facts">
+          <li><span class="about-fact-num">150</span><span class="about-fact-label">hackers expected</span></li>
+          <li><span class="about-fact-num">12 hrs</span><span class="about-fact-label">of building</span></li>
+          <li><span class="about-fact-num">$0</span><span class="about-fact-label">to attend, food included</span></li>
+          <li><span class="about-fact-num about-fact-place">Rancho Cotati</span><span class="about-fact-label">TAG Building (TBD)</span></li>
+        </ul>
       </div>
 
       <div class="about-features">
@@ -1927,12 +2186,104 @@
               </button>
               <p class="faq-a">No. Hackity is free — food included.</p>
             </li>
+            <li class="faq-item">
+              <button type="button" class="faq-q" aria-expanded="false">
+                <span>What is a hackathon?</span>
+                <span class="faq-sign" aria-hidden="true">+</span>
+              </button>
+              <p class="faq-a">A one-day event where students team up to build an app, game, or website from scratch, then demo it to judges for prizes. No hacking into anything — just building.</p>
+            </li>
+            <li class="faq-item">
+              <button type="button" class="faq-q" aria-expanded="false">
+                <span>Where is it?</span>
+                <span class="faq-sign" aria-hidden="true">+</span>
+              </button>
+              <p class="faq-a">We're planning on the TAG Building at Rancho Cotati High School (TBD — pending approval). We're aiming for about 150 hackers.</p>
+            </li>
           </ul>
         </div>
 
         <section id="sponsors" class="bento-sponsor" aria-labelledby="sponsors-heading">
-          <h2 id="sponsors-heading">Sponsor hackity</h2>
-          <a class="sponsor-cta" href="mailto:support@hackity2026.org">Email us</a>
+          <div class="sponsor-top">
+            <h2 id="sponsors-heading">Sponsor hackity</h2>
+            <p class="sponsor-lead">
+              Put your business in front of 150 local high school builders. Every dollar goes
+              straight to prizes, food, and supplies for students.
+            </p>
+          </div>
+
+          <div class="sponsor-pyramid" aria-label="Sponsorship tiers">
+            <div class="tier tier-1">
+              <span class="tier-name">title sponsor</span>
+              <span class="tier-amt">$2,500+</span>
+              <span class="tier-perk">Everything below, plus “presented by” naming, a track named after you, and a talk at the opening ceremony</span>
+            </div>
+            <div class="tier tier-2">
+              <span class="tier-name">gold</span>
+              <span class="tier-amt">$1,000</span>
+              <span class="tier-perk">Large logo on shirts, banners &amp; site, table at the event, judge or mentor seat</span>
+            </div>
+            <div class="tier tier-3">
+              <span class="tier-name">silver</span>
+              <span class="tier-amt">$500</span>
+              <span class="tier-perk">Medium logo on shirts &amp; site, dedicated social post, swag in hacker bags</span>
+            </div>
+            <div class="tier tier-4">
+              <span class="tier-name">bronze</span>
+              <span class="tier-amt">$200</span>
+              <span class="tier-perk">Small logo on site &amp; shirts, social shoutout</span>
+            </div>
+            <div class="tier tier-5">
+              <span class="tier-name">friend</span>
+              <span class="tier-amt">any amount or in-kind</span>
+              <span class="tier-perk">Food, boba, prizes, or supplies — name on our website &amp; a thank-you post</span>
+            </div>
+          </div>
+
+          <div class="sponsor-perks">
+            <h3>In return for sponsoring, we'll put you on:</h3>
+            <ul>
+              <li><strong>T-shirts</strong> worn by every hacker and volunteer</li>
+              <li><strong>Our website</strong> with a link to yours</li>
+              <li><strong>Banners</strong> hung at the venue all day</li>
+              <li><strong>Socials</strong> — Instagram &amp; Discord shoutouts</li>
+              <li><strong>Anything you'd like to promote</strong> — a product, a deal, an internship, an API. Tell us and we'll make room for it.</li>
+            </ul>
+          </div>
+
+          <div class="sponsor-why">
+            <h3>Who you're reaching</h3>
+            <p>
+              About 150 high schoolers from across CRPUSD and Sonoma County — future engineers,
+              designers, and founders. Sponsoring Hackity is a direct way to invest in local STEM
+              talent and put your name in front of tomorrow's hires.
+            </p>
+          </div>
+
+          <div class="sponsor-budget">
+            <h3>Where your money goes</h3>
+            <ul aria-label="Budget breakdown">
+              <li><span class="budget-amt">$2,550</span><span>prizes for winning teams</span></li>
+              <li><span class="budget-amt">$2,500</span><span>food &amp; boba for every hacker</span></li>
+              <li><span class="budget-amt">$130</span><span>wifi repeaters &amp; power</span></li>
+            </ul>
+            <p class="budget-note">Goal: ~$5,700 total. 100% goes to the event.</p>
+          </div>
+
+          <div class="sponsor-perks">
+            <h3>Not ready to give money? Help in other ways:</h3>
+            <ul>
+              <li><strong>Mentor or judge</strong> — send employees to help teams during the day</li>
+              <li><strong>Run a workshop</strong> — teach a skill or show off your tools</li>
+              <li><strong>Demo your product or API</strong> — let students build with it</li>
+              <li><strong>Donate food, prizes, or supplies</strong> — boba, pizza, gear, swag</li>
+            </ul>
+          </div>
+
+          <div class="sponsor-foot">
+            <p>Want to help? Let's talk.</p>
+            <a class="sponsor-cta" href="mailto:support@hackity2026.org">Email us</a>
+          </div>
         </section>
       </div>
     </section>
